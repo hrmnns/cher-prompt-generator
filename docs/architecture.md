@@ -18,4 +18,4 @@
 - renderer.js → erzeugt Markdown-basierte Prompt-Templates
 
 ### Index
-- index.html → beinhaltet Tailwind, App-Initialisierung und Layout
+- [index.html](https://hrmnns.github.io/cher-prompt-generator/src/index.html)→ beinhaltet Tailwind, App-Initialisierung und Layout
