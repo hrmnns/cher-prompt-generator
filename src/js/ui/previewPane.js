@@ -1,22 +1,14 @@
-import { renderMarkdown } from "../renderer.js";
+const html = marked.parse(md);
 
-export function renderPreviewPane(el, state) {
-  const md = renderMarkdown(state);
+el.innerHTML = `
+  <h2 class="text-sm font-semibold mb-3">Vorschau</h2>
 
-  el.innerHTML = `
-    <h2 class="text-sm font-semibold mb-2">Vorschau (Markdown)</h2>
+  <div class="prose prose-sm max-w-none mb-4 border border-gray-200 rounded-lg p-4 bg-white">
+    ${html}
+  </div>
 
-    <pre class="text-xs bg-gray-100 p-3 rounded border whitespace-pre-wrap">
-${md}
-    </pre>
-
-    <button id="copyBtn"
-      class="mt-3 px-3 py-2 bg-blue-600 text-white rounded text-xs">
-      Kopieren
-    </button>
+  <button id="copyBtn"
+    class="px-3 py-2 bg-blue-600 text-white rounded-md text-xs shadow hover:bg-blue-700">
+    Kopieren
+  </button>
   `;
-
-  el.querySelector("#copyBtn").addEventListener("click", () => {
-    navigator.clipboard.writeText(md);
-  });
-}
