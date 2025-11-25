@@ -1,6 +1,34 @@
+import { PromptDefinitions } from "../types.js";
+
+export function renderDynamicFormArea(el, typeId, values, onChange) {
+  const def = PromptDefinitions[typeId];
+  if (!def) {
+    el.innerHTML = "<p>Kein Formular verfügbar.</p>";
+    return;
+  }
+
+  const fieldsHtml = def.fields
+    .map((f) => renderField(f, values[f.id] || ""))
+    .join("");
+
+  el.innerHTML = `
+    <form class="space-y-4" id="dynamicForm">
+      ${fieldsHtml}
+    </form>
+  `;
+
+  el.querySelector("#dynamicForm").addEventListener("input", (e) => {
+    const fieldId = e.target.dataset.field;
+    if (!fieldId) return;
+    onChange(fieldId, e.target.value);
+  });
+}
+
 function renderField(field, value) {
   const baseLabel = `
-    <label class="block text-sm font-medium text-gray-700 mb-1">${field.label}${field.required ? " *" : ""}</label>
+    <label class="block text-sm font-medium text-gray-700 mb-1">
+      ${field.label}${field.required ? " *" : ""}
+    </label>
   `;
 
   switch (field.type) {
