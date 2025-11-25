@@ -1,6 +1,6 @@
 import { PromptDefinitions } from "../types.js";
 
-export function renderDynamicFormArea(el, typeId, values) {
+export function renderDynamicFormArea(el, typeId, values, onChange) {
   const def = PromptDefinitions[typeId];
   if (!def) {
     el.innerHTML = "<p>Kein Formular verfügbar.</p>";
@@ -12,8 +12,19 @@ export function renderDynamicFormArea(el, typeId, values) {
     .join("");
 
   el.innerHTML = `
-    <form class="space-y-4">${fieldsHtml}</form>
+    <form class="space-y-4" id="dynamicForm">
+      ${fieldsHtml}
+    </form>
   `;
+
+  // Event delegation: Listen for changes on all fields
+  el.querySelector("#dynamicForm").addEventListener("input", (e) => {
+    const fieldId = e.target.dataset.field;
+    if (!fieldId) return;
+
+    const newValue = e.target.value;
+    onChange(fieldId, newValue);
+  });
 }
 
 function renderField(field, value) {
@@ -31,7 +42,12 @@ function renderField(field, value) {
         <div>
           <label class="block text-sm font-medium mb-1">${field.label}</label>
           <select class="w-full border p-2 rounded" data-field="${field.id}">
-            ${field.options.map(o => `<option value="${o}">${o}</option>`).join("")}
+            ${field.options
+              .map(
+                (o) =>
+                  `<option value="${o}" ${o === value ? "selected" : ""}>${o}</option>`
+              )
+              .join("")}
           </select>
         </div>
       `;
