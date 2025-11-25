@@ -20,7 +20,6 @@ export function renderWizard(el, steps, currentStep, onNext, onBack) {
   el.innerHTML = `
     ${stepBar}
     <div id="wizard-step-container" class="rounded-lg border p-4 bg-gray-50 min-h-[200px]">
-      <!-- step content injected by parent -->
     </div>
 
     <div class="flex justify-between mt-4">
@@ -32,8 +31,7 @@ export function renderWizard(el, steps, currentStep, onNext, onBack) {
       </button>
 
       <button id="wizardNext"
-        class="px-3 py-2 bg-blue-600 text-white rounded-md text-sm shadow"
-      >
+        class="px-3 py-2 bg-blue-600 text-white rounded-md text-sm shadow">
         Weiter
       </button>
     </div>
