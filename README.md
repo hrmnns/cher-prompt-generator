@@ -1,11 +1,8 @@
 # Prompt-Generator (Beispielprojekt nach cher-alot2come)
 
-Dieses Repository enthält die technische Umsetzung des Beispielprojekts  
-**„Prompt-Generator WebApp“**, das in der Methodik *cher-alot2come* zur Demonstration  
-des Makro- und Mikroprozesses entwickelt wird.
+Dieses Repository enthält die technische Umsetzung des Beispielprojekts **„Prompt-Generator WebApp“**, das in der Methodik *cher-alot2come* zur Demonstration des Makro- und Mikroprozesses entwickelt wird.
 
-Das Projekt besteht aus einer kleinen HTML/Tailwind-WebApp, mit der Anwender strukturierte  
-Prompts generieren können (Start-Prompts, Drift-Korrektur, Rollenaktivierung, Persistenz usw.).
+Das Projekt besteht aus einer kleinen HTML/Tailwind-WebApp, mit der Anwender strukturierte Prompts generieren können (Start-Prompts, Drift-Korrektur, Rollenaktivierung, Persistenz usw.).
 
 ## 🎯 Ziele
 
