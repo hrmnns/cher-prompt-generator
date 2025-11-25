@@ -1,3 +1,5 @@
+import { PromptDefinitions } from "../types.js";
+
 export function renderPromptTypeSelector(el, onSelect) {
   const options = Object.entries(PromptDefinitions)
     .map(([id, def]) => `<option value="${id}">${def.label}</option>`)
