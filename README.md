@@ -46,9 +46,7 @@ Diese WebApp benötigt **kein Build-Tool**.
 
 Einfach öffnen:
 
-```
-src/index.html
-```
+[https://hrmnns.github.io/cher-prompt-generator/src/index.html](https://hrmnns.github.io/cher-prompt-generator/src/index.html)
 
 Tailwind wird per CDN eingebunden.
 
