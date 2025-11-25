@@ -1,14 +1,24 @@
-const html = marked.parse(md);
+import { renderMarkdown } from "../renderer.js";
+import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
-el.innerHTML = `
-  <h2 class="text-sm font-semibold mb-3">Vorschau</h2>
+export function renderPreviewPane(el, state) {
+  const md = renderMarkdown(state);
+  const html = marked.parse(md);
 
-  <div class="prose prose-sm max-w-none mb-4 border border-gray-200 rounded-lg p-4 bg-white">
-    ${html}
-  </div>
+  el.innerHTML = `
+    <h2 class="text-sm font-semibold mb-3">Vorschau</h2>
 
-  <button id="copyBtn"
-    class="px-3 py-2 bg-blue-600 text-white rounded-md text-xs shadow hover:bg-blue-700">
-    Kopieren
-  </button>
+    <div class="prose prose-sm max-w-none mb-4 border border-gray-200 rounded-lg p-4 bg-white">
+      ${html}
+    </div>
+
+    <button id="copyBtn"
+      class="px-3 py-2 bg-blue-600 text-white rounded-md text-xs shadow hover:bg-blue-700">
+      Kopieren
+    </button>
   `;
+
+  el.querySelector("#copyBtn").addEventListener("click", () => {
+    navigator.clipboard.writeText(md);
+  });
+}
